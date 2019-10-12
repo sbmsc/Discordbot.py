@@ -61,8 +61,9 @@ async def bitcoin():
         raw_response = await session.get(url)
         response = await raw_response.text()
         response = json.loads(response)
+        price=response['bpi']['USD']['rate']
         await client.say("Bitcoin price is: $" + response['bpi']['USD']['rate'])
-
+        return price
 
 async def list_servers():
     await client.wait_until_ready()
